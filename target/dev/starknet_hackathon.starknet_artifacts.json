@@ -1,0 +1,1 @@
+{"version":1,"contracts":[{"id":"80bdd7eeg7jsm","package_name":"thunder_contract","contract_name":"OrderBook","module_path":"thunder_contract::core::contract1::OrderBook","artifacts":{"sierra":"starknet_hackathon_OrderBook.contract_class.json","casm":"starknet_hackathon_OrderBook.compiled_contract_class.json"}}]}
