@@ -7,6 +7,7 @@ pub mod OrderBook {
     use starknet::storage::{
         Map, StoragePathEntry, StoragePointerReadAccess, StoragePointerWriteAccess,
     };
+    use core::dict::Felt252Dict;
     use starknet::{ContractAddress, get_caller_address};
 
     #[storage]
@@ -14,6 +15,7 @@ pub mod OrderBook {
         next_order_id: u256,
         order_list: Map::<u256, Order>,
         user_orders: Map::<(ContractAddress, u256), Order> //UserAddr + id => Order
+
     }
 
     #[event]
@@ -43,6 +45,7 @@ pub mod OrderBook {
         pub amount: u256,
         pub apy: u256,
         pub deadline: u256,
+        pub fulfill: bool,
         // price: u256,// duration: u256,
     }
 
@@ -51,7 +54,6 @@ pub mod OrderBook {
 
     #[abi(embed_v0)]
     impl OrderBookImpl of thunder_contract::interfaces::contract1::IOrderBook<ContractState> {
-        
         fn create_order(ref self: ContractState, caller: ContractAddress, order: Order) {
             let UserOrder = Order {
                 id: self.next_order_id.read(),
@@ -59,6 +61,7 @@ pub mod OrderBook {
                 amount: order.amount,
                 apy: order.apy,
                 deadline: order.deadline,
+                fulfill: false,
             };
 
             self.order_list.entry(self.next_order_id.read()).write(UserOrder);
@@ -68,9 +71,28 @@ pub mod OrderBook {
             self.next_order_id.write(self.next_order_id.read() + 1);
         }
 
-        fn compute_order_hash(ref self: ContractState,order: Order) -> felt252 {
+        fn fulfill_order(ref self: ContractState, order_id: u256) {
+            let user_order = self.order_list.entry(order_id).read();
+            let UserOrder = Order {
+                id: order_id,
+                seller: user_order.seller,
+                amount: user_order.amount,
+                apy: user_order.apy,
+                deadline: user_order.deadline,
+                fulfill: true,
+            };
+
+            self.order_list.entry(order_id).write(UserOrder);
+        }
+
+
+        fn compute_order_hash(ref self: ContractState, order: Order) -> felt252 {
             let poseidon_hash = PoseidonTrait::new().update_with(order).finalize();
             return poseidon_hash;
+        }
+
+        fn get_order_by_id(self: @ContractState, order_id: u256) -> Order {
+            self.order_list.entry(order_id).read()
         }
     }
 }
