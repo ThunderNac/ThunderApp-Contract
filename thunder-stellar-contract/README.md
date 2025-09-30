@@ -1,21 +1,87 @@
-# Soroban Project
+# 💫 Soroban Project
 
-## Project Structure
+This repository contains multiple smart contracts developed for the **Soroban Smart Contract Platform** on Stellar. It follows the recommended structure for multi-contract Soroban projects.
 
-This repository uses the recommended structure for a Soroban project:
+## 📁 Project Structure
+
 ```text
 .
 ├── contracts
-│   └── hello_world
-│       ├── src
-│       │   ├── lib.rs
-│       │   └── test.rs
-│       └── Cargo.toml
+│   ├── erc20_token
+│   │   ├── src
+│   │   │   ├── lib.rs
+│   │   │   └── test.rs
+│   │   └── Cargo.toml
+│   ├── erc3643_compliance_token
+│   │   ├── src
+│   │   │   ├── lib.rs
+│   │   │   └── test.rs
+│   │   └── Cargo.toml
+│   ├── nft_mockup_erc721
+│       ├── src
+│       │   ├── lib.rs
+│       │   └── test.rs
+│       └── Cargo.toml
+
 ├── Cargo.toml
 └── README.md
 ```
 
-- New Soroban contracts can be put in `contracts`, each in their own directory. There is already a `hello_world` contract in there to get you started.
-- If you initialized this project with any other example contracts via `--with-example`, those contracts will be in the `contracts` directory as well.
-- Contracts should have their own `Cargo.toml` files that rely on the top-level `Cargo.toml` workspace for their dependencies.
-- Frontend libraries can be added to the top-level directory as well. If you initialized this project with a frontend template via `--frontend-template` you will have those files already included.
+### 📦 Available Contracts
+
+#### ✅ `erc20_token`
+
+A ERC20 token contract compliant with Soroban logic. Supports standard functions for futur prupose:
+
+- `mint`, `burn`, `transfer`, `approve`, `allowance`.
+
+#### ✅ `erc3643_compliance_token`
+
+A prototype inspired by the **ERC-3643** standard with:
+
+- Identity (KYC) management via allowlists.
+- On-chain compliance logic with access control.
+- Support for custom transfer rules.
+
+> ✨ This contract is adapted for the Soroban environment, as there's no official ERC-3643 standard yet.
+
+#### ✅ `nft_mockup_erc721`
+
+A  mockup of ERC721-like behavior:
+
+- NFT minting with URI.
+- Read owner and URI.
+- Simplified structure to explore NFT compatibility on Soroban.
+
+---
+
+## 🧪 Tests
+
+Each contract includes a `test.rs` file with built-in unit tests.
+
+To run all tests:
+
+```bash
+cargo test
+```
+
+---
+
+## 🚀 Deployment
+
+Contracts can be built and deployed using the Soroban CLI:
+
+```bash
+soroban build
+soroban deploy ...
+```
+
+> 🔧 Make sure you configure `soroban-cli` and your network environment properly (sandbox/testnet/mainnet).
+
+---
+
+## 🧭 Coming Soon
+
+- React frontend interface using `@stellar/soroban-client`
+- CLI tools for batch mint / transfer
+- Dynamic compliance layer for RWA support
