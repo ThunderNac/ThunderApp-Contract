@@ -18,6 +18,11 @@ This repository contains multiple smart contracts developed for the **Soroban Sm
 │   │   │   └── test.rs
 │   │   └── Cargo.toml
 │   ├── nft_mockup_erc721
+│   │   ├── src
+│   │   │   ├── lib.rs
+│   │   │   └── test.rs
+│   │   └── Cargo.toml
+│   ├── Vault
 │       ├── src
 │       │   ├── lib.rs
 │       │   └── test.rs
@@ -53,6 +58,12 @@ A  mockup of ERC721-like behavior:
 - Read owner and URI.
 - Simplified structure to explore NFT compatibility on Soroban.
 
+#### ✅ vault_contract
+A  vault smart contract:
+	•	Tokenized vault that manages user deposits and withdrawals.
+	•	Supports manual profit injection from off-chain (Web2) investments.
+	•	Distributes fixed-yield rewards proportionally to user shares.
+	•	Built to bridge Web2-generated yields  into Web3 transparency
 ---
 
 ## 🧪 Tests
