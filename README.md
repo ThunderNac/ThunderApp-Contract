@@ -27,6 +27,9 @@ This repository focuses **exclusively** on the **smart contract layer** of Thund
 
 - **ERC20-style Token** – A fungible token adapted for Soroban for future prupose.
 - **ERC3643-inspired Compliance Token** – With allowlist/KYC logic and transfer restrictions.
+- **nvestment Vault Contract** – A profit-sharing smart contract where users deposit tokens and receive shares.
+  Profits from off-chain sources can be manually injected and are distributed proportionally.
+  Designed to bridge Web2 yield into Soroban smart contract logic.
 - **Mock ERC721 NFT** – For early experimentation with collectible asset representations.
   Each contract includes unit tests and is organized under the `/contracts` directory.
 
@@ -39,6 +42,7 @@ This repository focuses **exclusively** on the **smart contract layer** of Thund
 ├── contracts
 │   ├── erc20_token
 │   ├── erc3643_compliance_token
+│   ├── vault
 │   └── nft_mockup_erc721
 ├── Cargo.toml
 └── README.md
