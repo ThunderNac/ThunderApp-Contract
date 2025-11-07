@@ -5,6 +5,8 @@ It is part of our submission for the **Stellar Community Fund (SCF)** and repres
 
 ---
 
+image.png
+
 ## 🚀 About Thunder
 
 **Thunder** is an **all-in-one solution** securing **private and professional investments in collectible assets**.
@@ -49,6 +51,8 @@ This repository focuses **exclusively** on the **smart contract layer** of Thund
 ```
 
 ---
+
+![Thunder on Stellar Overview](./image.png)
 
 #### ✅ `erc3643_compliance_token`
 
