@@ -1,6 +1,6 @@
 # ⚡ Thunder on Stellar – Smart Contract Foundations
 
-This repository contains the **first version of the core smart contracts** for [**Thunder**](https://thunder.network) built on **Stellar's Soroban platform**.  
+This repository contains the **first version of the core smart contracts** for **Thunder** built with **Stellar's Soroban**.  
 It is part of our submission for the **Stellar Community Fund (SCF)** and represents the foundation of our integration with the Stellar ecosystem.
 
 ---
